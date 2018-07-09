@@ -7,11 +7,17 @@
 
 - name: Install mysql-client
   apt:
-    name: "{{ item }}"
+    name: '{{ item }}'
   with_items:
     - python-dev
     - libmysqlclient-dev
     - mysql-client
+
+- name: Update config to listen to remote-facing ip address
+  lineinfile:
+    dest: /etc/mysql/my.cnf
+    regexp: '^bind-address\s+=(.)+'
+    line: 'bind-address = 0.0.0.0'
 
 - name: Run MySQL
   service:
@@ -21,7 +27,7 @@
 
 - name: Install Python MySQL module
   pip:
-    name: "{{ item }}"
+    name: '{{ item }}'
   with_items:
     - MySQL-python
 
@@ -30,6 +36,7 @@
     name: '{{ dbase.user }}'
     password: '{{ dbase.password }}'
     priv: '*.*:ALL'
+    host: '{{ wordpress.host }}'
     state: present
 
 - name: Create database

@@ -6,5 +6,7 @@ dbase:
   user: WPUser
   password: abcd12345
   name: wordpress_db
+  host: r1-p3
 
-
+wordpress:
+  host: r1-p2

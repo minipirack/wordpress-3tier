@@ -7,6 +7,9 @@
   roles:
     - mysql
 
+  tags:
+    - tier3
+
 - name: Setup Tier 2
   hosts: tier2
   become: yes
@@ -16,9 +19,15 @@
     - apache
     - wordpress
 
+  tags:
+    - tier2
+
 - name: Setup Tier 1
   hosts: tier1
   become: yes
 
   roles:
     - nginx
+
+  tags:
+    - tier1
