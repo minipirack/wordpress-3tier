@@ -1,0 +1,39 @@
+---
+
+- name: Update repositories cache and install mysql-server
+  apt:
+    name: mysql-server
+    update_cache: yes
+
+- name: Install mysql-client
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - python-dev
+    - libmysqlclient-dev
+    - mysql-client
+
+- name: Run MySQL
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Install Python MySQL module
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - MySQL-python
+
+- name: Create database user
+  mysql_user:
+    name: '{{ dbase.user }}'
+    password: '{{ dbase.password }}'
+    priv: '*.*:ALL'
+    state: present
+
+- name: Create database
+  mysql_db:
+    name: '{{ dbase.name }}'
+    state: present
+

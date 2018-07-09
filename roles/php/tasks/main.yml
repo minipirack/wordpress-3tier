@@ -1,0 +1,18 @@
+---
+
+- name: Install php
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - php-pear
+    - php-fpm
+    - php-dev
+    - php-zip
+    - php-curl
+    - php-xmlrpc
+    - php-mysql
+    - php-mbstring
+    - php-xml
+

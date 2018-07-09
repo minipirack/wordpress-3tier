@@ -1,0 +1,24 @@
+---
+
+- name: Setup Tier 3
+  hosts: tier3
+  become: yes
+
+  roles:
+    - mysql
+
+- name: Setup Tier 2
+  hosts: tier2
+  become: yes
+
+  roles:
+    - php
+    - apache
+    - wordpress
+
+- name: Setup Tier 1
+  hosts: tier1
+  become: yes
+
+  roles:
+    - nginx

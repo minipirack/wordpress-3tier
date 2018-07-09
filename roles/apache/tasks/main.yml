@@ -1,0 +1,17 @@
+---
+
+- name: Install apache
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apache2
+    - php-mysql
+    - libapache2-mod-php
+    - php-mcrypt
+
+
+- name: Start apache server
+  service:
+    name: apache2
+    state: restarted

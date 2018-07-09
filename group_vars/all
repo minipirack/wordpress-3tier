@@ -1,0 +1,10 @@
+# default user and password for Hypriot linux
+ansible_user: pirate
+ansible_ssh_pass: hypriot
+
+dbase:
+  user: WPUser
+  password: abcd12345
+  name: wordpress_db
+
+
