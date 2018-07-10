@@ -8,6 +8,8 @@ See [network diagram.
 ](./images/MiniPiRack-3-Tier-Wordpress.png)
 ![Network Diagram](./images/MiniPiRack-3-Tier-Wordpress.png)
 
+## WARNING:  This is NOT a secured installation!  This is for example use only!
+
 ## To run the ansible playbook
 
     ansible-playbook -i hosts site.yml
