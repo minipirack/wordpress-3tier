@@ -31,3 +31,16 @@
 
   tags:
     - tier1
+
+- name: Lockdown
+  hosts:
+    - tier1
+    - tier2
+    - tier3
+  become: yes
+
+  roles:
+    - lockdown
+
+  tags:
+    - lockdown

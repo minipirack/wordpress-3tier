@@ -1,0 +1,11 @@
+---
+
+# iptables -I INPUT -p tcp -s 192.168.70.61 -j ACCEPT
+# TODO Not working?
+- name: Lock down the web server so all requests must go through tier1
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    source: "{{ frontend.host }}"
+    jump: ACCEPT
+  when: "'tier2' in group_names"

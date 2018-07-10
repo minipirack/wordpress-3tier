@@ -10,3 +10,7 @@ dbase:
 
 wordpress:
   host: r1-p2
+
+frontend:
+  server_name: r1-p1.local
+  host: r1-p1
